@@ -24,14 +24,23 @@
     header{display:flex;align-items:center;gap:14px;margin-bottom:6px}
     a{color:var(--brand);text-decoration:none}
     a:hover{text-decoration:underline}
+
+    /* Example callout styling (for Ex. 1) */
+    .example{border-left:4px solid var(--brand);padding:.6rem .8rem;background:#0b1226;border-radius:8px;margin:.8rem 0}
+    .ex-label{font-weight:700;margin-right:.6rem}
+    ol{padding-left:22px}
   </style>
+
+  <!-- MathJax: render \( ... \) inline math -->
+  <script>
+    window.MathJax = { tex: { inlineMath: [['\\(','\\)'], ['$', '$']], processEscapes: true } };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
   <main class="wrap">
     <header>
-      
       <img class="portrait" src="assets/profile.jpg" alt="Portrait of Can Konuk" />
-      
       <div>
         <h1>Can Konuk</h1>
         <div class="muted">Academic page of Can Konuk</div>
@@ -42,18 +51,67 @@
       <h2>About</h2>
       <p>I am currently a postdoc student working with Thomas Icard at Stanford University. Prior to that, I did my PhD under the supervision of Salvador Mascarenhas.
         <a href="pdfs/cv-konuk.pdf" target="_blank">Download CV [PDF]</a>
-</p>
+      </p>
     </section>
 
-    <section class="card" id="research">
-      <h2>Research</h2>
-      <p>My research explores how human reason with probabilistic and causal information. In particular, three focuses of my work are:</p>
-      <ul>
-        <li>What sort of reasoning strategies underly the Representativeness effect and other non-normative patterns of probabilistic reasoning identified in the literature.</li>
-        <li>How probabilities and subjects causal models for a given situation influence their causal responsibility judgments. In particular, I have been interested in plu r al cause judgments, in which people point to multivariate causes as `the cause’ of a given event.</li>
-        <li>How in turn the widespread use of causal responsibility judgments in ordinary discourse enriches subjects causal knowledge by assisting them in the task of abductive inference from limited observations.</li>
-      </ul>
+    <!-- === RESEARCH SUMMARY (with requested three links only) === -->
+    <section class="card" id="research-summary">
+      <h2>Research Summary</h2>
+
+      <p>My research investigates how <em>causal representations</em> support <em>understanding</em>. I may know some generic fact, such as:</p>
+
+      <div class="example" id="ex-deciduous">
+        <span class="ex-label">Ex. 1</span>
+        Large-leaved plants shed their leaves in winter. (Aristotle, <em>Post. Analytics</em> II.16–17)
+      </div>
+
+      <p>From <a href="#ex-deciduous">Ex. 1</a> I can draw inferences and make predictions (“fig trees have large leaves; therefore fig trees lose their leaves in winter”). Yet I do not thereby <em>understand</em> <a href="#ex-deciduous">Ex. 1</a>: Why large rather than small leaves? And why winter rather than summer?</p>
+
+      <p>Explanations answer such questions by revealing the causal structure that makes Ex. 1 hold. A causal account might for example point out that large leaves incur higher maintenance costs that short winter days cannot offset in photosynthesis. Beyond being explanatorily satisfying, such structure expands predictive reach: outside of Aristotle’s Mediterranean climate, where Ex. 1 holds, where sun is present year-round, large-leaved plants may remain evergreen; where the dry season is the primary stressor, leaf drop may happen then rather than in the winter; and where winters are even harsher than in the Mediterranean, even small-leaved plants may shed (all of which are true). For this reason, I look at explanations that people endorse or produce as privileged windows into causal understanding.</p>
+
+      <p>I focus on explanations that turn on <em>causal selection</em>: among the many conditions that helped bring about an outcome, we single out those judged most explanatory (“the cause”). Causal selection is most striking when multiple factors are necessary in symmetric ways. We all recognize that both water and sun are required for a <em>fig tree</em> to grow, yet we may judge one as more determinant depending on context: in dry Carthage, rainfall feels crucial because it is less guaranteed; in shaded, damp valleys of the Apennines, sustained summer sun may loom larger. A common view is that such expectations shape selection by guiding which counterfactual contrasts we consider.</p>
+
+      <p><strong>Lines of work.</strong></p>
+      <ol>
+        <li>
+          <strong>Plural causal selection.</strong>
+          Existing studies mostly target single-variable attributions (“the fig tree grew because of the water”). In
+          <a href="https://doi.org/10.31234/osf.io/nuptb">joint experimental work</a>,
+          we proposed to extend this to <em>multivariate</em> attributions (e.g., “because of the water and the rich soil”). The evidence shows that participants treat such conjunctive explanations as <em>bona fide</em> candidates for causal selection on a par with singular ones, and their judgments are sensitive to familiar parameters (such as the prior probability of each factor). The data further indicate that selection is influenced by more than bare counterfactual dependence: patterns for negative outcomes, in particular, resist accounts that equate explaining \( \neg E \) with merely tracking events that correlate with the absence of \(E\).
+        </li>
+
+        <li>
+          <strong><a href="pdfs/phd-dissertation.pdf">A procedural view on causal knowledge.</a></strong>
+          I explore the ways in which causal knowledge can be encoded in a procedural format (much like a skill), rather than declarative/descriptive models. Skill knowledge can be decomposed into sequences of instructions with a control flow. Door-opening skill, for example, means first putting the key into the lock; once the key fits, turn the key; then, press the handle, etc. Each instruction must trigger conditionally on the execution of the previous one for the process to come to fruition.
+          <p>Much of our causal knowledge can be encoded in a similar way through the use of internal <em>simulation programs</em>. Those consist of instructions to retrieve certain mental tokenings of representations of events conditional on others. A simulation program may for example contain instructions to bring to mind a representation of fig trees growing, conditional on retrieving the information that water and sun are present. In that way, programs can encode the kind of knowledge that is usually modeled through the use of Structural Models; in addition to that, they also shed light on features of our knowledge that are not accounted for by SCM descriptions:</p>
+          <ul>
+            <li>We expect programs to be modular in a way that separates the different paths that can be used to achieve the same end. If a door can be opened both with a key and with a digicode, then we expect the two sequences of instructions to correspond to distinct branches in the control flow of the program; unless something went wrong, you do not start fetching your keys after having typed half of your code. The same logic suggests that <em>minimal sufficient conditions</em> for bringing about an outcome would typically be tracked separately in one’s internal simulation program. I argue that this has observable consequences on causal explanations.</li>
+            <li>This also predicts an asymmetrical treatment of positive (explaining \(E\)) vs. negative (explaining \( \neg E \)) outcomes in causal explanations. Procedural door-opening knowledge does not have to contain instructions on how to leave a door closed. Similarly, my simulation program may not by default track the conditions under which fig trees <em>don’t grow</em>. Failure to retrieve the information that the “water” and “sun” trigger conditions are satisfied may simply lead the program to not fire. To go the extra mile and derive from the absence of water that the fig trees didn’t grow, one would have to (i) try to derive tree growing; (ii) fail; (iii) assume that all of the paths by which it could have been derived have been tried (the closed-world assumption). I study how the extra procedural steps involved in such derivations may explain many of the surprising patterns observed in the literature for causal judgments about negative outcomes.</li>
+          </ul>
+        </li>
+
+        <li>
+          <strong>Neural implementation (gradedness).</strong>
+          I also study how such simulation programs (and our causal representations in general) can be implemented in neural architectures with continuous weights and parametric activation functions. A running hypothesis here is that the existence of graded intuitions of causal responsibility or strength even for causal systems that lend themselves to a description in terms of all-or-nothing logic rules like \( E \longleftarrow A \land B \) has to do with the fact that these systems are internally simulated through neural models that operate with parametric activation functions. The “hard” (in the words of Smolensky, 1986) causal relations that we recognize between events are simulated through “soft” inference engines at a lower level. The parametric details of these soft engines track some of the statistical information that is observed to factor into our causal selection judgments, and this is how we are able to see both how water and sun are equally necessary to fig growing, and how one may be more crucial than the other in some cases. Part of the point of this account is to bridge together the literature on causal judgments and the older literature on causal strength and associative theories of learning.
+        </li>
+
+        <li>
+          <strong><a href="https://doi.org/10.31234/osf.io/3wzpe">Learning from causal selection explanations.</a></strong>
+          Another topic of interest to me is the way in which subjects learn from causal explanations. In joint work with Navarre et al. 2024 (see also Kirfel et al. 2022) we observe that causal selection judgments help people figure out what is the ground-truth rule underlying a set of data. Two accounts can be proposed to understand <em>how</em> they help:
+          <ul>
+            <li><strong>Pragmatic inference:</strong> causal selection depends on the causal theory endorsed by the explainer; this allows listeners to reverse-engineer the theory that led speakers to select a particular explanation. Listeners can in effect reason: “If the speaker said because of A rather than because of A’, then they must be endorsing the causal theory T, rather than T’.” Although I believe that such inferences are part of the story (if for no other reason than every statement in a conversation, explanation or not, lends itself to such inferences), I don’t think they provide an account of how inference from explanations operates in general.</li>
+            <li><strong>An error-driven learning view:</strong> I propose a different view, which offers to understand the role of causal selection explanations as parasitic upon error-driven learning procedures, like those used in training neural networks. These learn from observations by updating the parameters of a function in the direction that reduces prediction error. Typical examples include neural or RL models. When observing that the outcome \(E\) follows from some events \(A, B, C\), a learner effectively reasons: “before that observation, how close was my model to predict \(E\) from \(A, B, C\)? And which parameters should I adjust to make it closer?” One difficulty is that the number of potentially relevant parameters may be large. I say that causal selection explanations can alleviate that difficulty by focusing the learner’s attention on a subset of the input variables. When told that \(E\) happened “because of \(A\)” by a competent speaker, I first increase the activation associated with the variable \(A\) in my internal model relative to \(B\) and \(C\) before I make predictions and reason about \(E\). This leads me to adjust parameters that depend on \(A\) more so than others as I draw lessons from the observations. This idea can be operationalized in a simple neural model using <em>attention masks</em>, and captures patterns in the data that the pragmatic account doesn’t handle. The account also has broader theoretical advantages, including:
+              <ol>
+                <li>It does not require, for explanations to be useful, that speaker and listener share a large common ground of priors, which they often don’t.</li>
+                <li>It captures the strong pre-theoretical intuition that explanations make learning from examples easier rather than harder — as they should if they worked by engaging learners into additional, second-hand inferences on top of first-hand inferences from observations.</li>
+                <li>It explains why we can benefit from explanations given by speakers with merely partial knowledge, i.e., with an expertise limited to a subpart of the relevant causal system and/or a small subset of the available observations, but no complete theory that we could aspire to reverse-engineer.</li>
+              </ol>
+            </li>
+          </ul>
+        </li>
+      </ol>
     </section>
+    <!-- === /RESEARCH SUMMARY === -->
 
     <section class="card" id="publications">
       <h2>Publications</h2>
@@ -77,18 +135,21 @@
       </p>
 
       <p>
-Konuk, C., Goodale, M., Quillien, T., &amp; Mascarenhas, S.
-Plural causes. Under review. <a href="https://osf.io/preprints/psyarxiv/5epzf_v1">OSF preprint</a>.
-
+        Konuk, C., Goodale, M., Quillien, T., &amp; Mascarenhas, S.
+        Plural causes. Under review.
+        <a href="https://osf.io/preprints/psyarxiv/5epzf_v1">OSF preprint</a>.
       </p>
 
       <p>
-Konuk, C.
-<a href="pdfs/phd-dissertation.pdf">Causal explanations and continuous computation. PhD Dissertation</a>.
-
+        Konuk, C.
+        <a href="pdfs/phd-dissertation.pdf">Causal explanations and continuous computation. PhD Dissertation</a>.
       </p>
     </section>
 
     <section class="contact">
       <strong>Contact</strong><br />
       Email: <em>konuk at stanford dot edu</em>
+    </section>
+  </main>
+</body>
+</html>
